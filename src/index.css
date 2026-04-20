@@ -1,0 +1,21 @@
+.auth-container{
+    background-image: url(./assets/images/auth-bg.png);
+    background-position: center center;
+    background-size: cover;
+
+}
+.bg-overlay{
+    background: linear-gradient(45deg,(rgba(47, 140, 96, 0.8),rgba(0, 0, 0, 0.8)));
+}
+
+.input-group{
+    background-color: #F7F7F7 ;
+    border-radius: 8px ;
+    margin-bottom: 3px;
+    transition: none
+
+}
+.input-group:focus-within{
+    border-color: #E6E6E6
+
+}
