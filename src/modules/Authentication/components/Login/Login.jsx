@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate} from 'react-router-dom'
 import emailIcon from "../../../../assets/auth-icon/email-icon.svg"
 import passIcon from "../../../../assets/auth-icon/password-icon.svg"
-import axios from 'axios'
 import { toast } from 'react-toastify'
-
+import { AuthAPI } from '../../../../api'
 
 export default function Login( {saveLoginData}) {
   let {register,formState:{errors},handleSubmit}=useForm();
   let navigate=useNavigate()
+  const [showPassword,setShowPassword]=useState(false)
   const onSubmit=async(data)=>{
     try{
-      const response=await axios.post("https://upskilling-egypt.com:3006/api/v1/Users/Login",data);
+      const response=await AuthAPI.Login(data)
       localStorage.setItem('token',response.data.token);
       saveLoginData();
       navigate('/dashboard');
@@ -63,7 +63,17 @@ export default function Login( {saveLoginData}) {
             <input {...register('password',{
               required:"Field is required",
             
-            })} type="password" className="form-control border-0 bg-transparent py-2" placeholder="enter your password"  aria-describedby="passwordelpblock"/>
+            })} type={showPassword?"text":"password"} className="form-control border-0 bg-transparent py-2" placeholder="enter your password"  aria-describedby="passwordelpblock"
+            />
+            {showPassword?(
+              <span className='input-group-text' onClick={()=>setShowPassword(false)} style={{cursor:"pointer"}}>
+                <i className='fa fa-eye text-muted'></i>
+              </span>
+            ):(
+              <span className='input-group-text' onClick={()=>setShowPassword(true)} style={{cursor:"pointer"}}>
+                <i className='fa fa-eye-slash text-muted'></i>
+              </span>
+            )}
         </div>
         {errors.password &&<span className='text-danger'>{errors.password.message}</span>}
         <div className='links d-flex justify-content-between mb-4 mt-2' >
