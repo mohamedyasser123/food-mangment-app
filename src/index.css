@@ -19,3 +19,114 @@
     border-color: #E6E6E6
 
 }
+.header-bg{
+    background-image: url(./assets/header-imges/header-bg-svg.svg);
+    background-repeat: no-repeat; 
+    background-size:cover; 
+    background-position: center; 
+    width: 100%;
+}
+.sidebar-container .ps-sidebar-container{
+    background-color: #1F263E ;
+     min-height: 100vh;
+     height: 100%;
+    border-top-right-radius:58px ;
+ 
+
+}
+ .sidebar-container .ps-sidebar-root{
+    border: none !important;
+ }
+.sidebar-container .ps-menu-button{
+    color: #fff !important;
+    transition:  all 1s;
+}
+.sidebar-container .ps-menu-button:hover{
+    background-color: rgba(0, 146, 77, 0.1) !important;
+    border-left:4px solid rgba(0, 146, 71, 1) ;
+}
+.btn:hover, 
+.btn:focus,
+.btn{
+    background-color: rgba(0, 146, 71, 1);
+    
+}
+.recipe-img{
+    height: 56px;
+    width: 56px;
+    border-radius: 8px;
+    
+}
+.btn-close{
+    background-size: 8px !important;
+    border:1px solid rgba(204, 0, 0, 1);
+    filter: invert(12%) sepia(100%) saturate(11111%) hue-rotate(358deg) brightness(100%) contrast(190%) !important;
+}
+.recipe-header{
+    background-color: rgba(240, 255, 239, 1);
+}
+.upload-box {
+  border: 2px dashed #4ca771;
+  background-color: #f8fff9;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  color: #333;
+}
+
+.upload-box:hover {
+  background-color: #efffef;
+  border-color: #28a745;
+}
+
+.upload-box p {
+  font-size: 14px;
+}
+
+
+.table {
+    border-collapse: separate; 
+    border-spacing: 0;
+    width: 100%;
+    overflow: hidden;
+}
+.table th, 
+.table td {
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    vertical-align: middle;
+    padding: 12px;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.thead-custom th {
+    background-color: #E2E5EB; 
+    color: black; 
+    padding: 32px;
+    border: none;
+}
+.thead-custom tr:first-child th:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.thead-custom tr:first-child th:last-child {
+    border-top-right-radius: 15px;
+     border-bottom-right-radius: 15px;
+}
+.not-found-bg{
+ background-image: url('./assets/not-found-bg.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; /* دي أهم خاصية عشان الصورة تفرش في الشاشة كلها */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
