@@ -124,7 +124,7 @@
  background-image: url('./assets/not-found-bg.png');
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover; /* دي أهم خاصية عشان الصورة تفرش في الشاشة كلها */
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
