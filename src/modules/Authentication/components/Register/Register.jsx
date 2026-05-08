@@ -42,9 +42,18 @@ const onSubmit = async (data) => {
     toast.success(response.data.message || "Account created successfully!");
     navigate("/verify-account"); 
   } catch (error) {
-    const msg = error.response?.data?.message || "Registration failed!";
-    toast.error(msg);
+  const serverErrors = error.response?.data?.additionalInfo?.errors;
+
+  let msg = "Registration failed!";
+
+  if (serverErrors) {
+    msg = serverErrors.userName?.[0] || serverErrors.password?.[0] || "Invalid data";
+  } else {
+    msg = error.response?.data?.message || "Something went wrong!";
   }
+
+  toast.error(msg);
+}
 };
   const profileImageFile = watch("profileImage");
   useEffect(()=>{
