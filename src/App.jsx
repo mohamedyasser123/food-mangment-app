@@ -23,16 +23,7 @@ function App() {
   //move to improve
   // lifting state up
   // poc prof of concept
-  const [loginData,setLoginData]=useState(null);
-  const saveLoginData=()=>{
-  let encodedToken=localStorage.getItem('token');
-  let decodedToken=jwtDecode(encodedToken);
-  setLoginData(decodedToken);
-  }
-  useEffect(()=>{
-    if(localStorage.getItem('token'))
-    saveLoginData();
-  },[])
+  
   
   const routes=createBrowserRouter(
     
@@ -42,8 +33,8 @@ function App() {
           element:<AuthLayout/>,
           errorElement:<NotFound/>,
           children:[
-            {index:true ,element:<Login saveLoginData={saveLoginData} />  },
-            {path:"login", element:<Login saveLoginData={saveLoginData}/>},
+            {index:true ,element:<Login />  },
+            {path:"login", element:<Login />},
             {path:"register", element:<Register/>},
             {path:"verify-account",element:<VerifyAccount/>},
             {path:"forget-pass",element:<ForgetPass/>},
@@ -53,10 +44,10 @@ function App() {
         },
          {
           path:"dashboard",
-          element:<ProtectedRoute loginData={loginData}><MasterLayout loginData={loginData} setLoginData={setLoginData}/></ProtectedRoute>,
+          element:<ProtectedRoute ><MasterLayout/></ProtectedRoute>,
           errorElement:<NotFound/>,
           children:[
-           {index:true ,element:<Dashboard loginData={loginData}/> },
+           {index:true ,element:<Dashboard /> },
              {path:"recipes", element:<RecipesList/>},
             {path:"recipe-data", element:<RecipeData/>},
             {path:"recipe-data/:id", element:<RecipeData/>},

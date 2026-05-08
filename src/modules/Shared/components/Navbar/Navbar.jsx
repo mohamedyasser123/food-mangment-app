@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import avatar from '../../../../assets/avatar.png'
 import arrow from "../../../../assets/navbar-icons/down_arrow.png"
 import notifi from "../../../../assets/navbar-icons/Notif-Icon.png"
+import { AuthContext } from '../../../../context/AuthContext';
 
-export default function Navbar({loginData}) {
+export default function Navbar() {
+    const{loginData}=useContext(AuthContext);
+
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary">

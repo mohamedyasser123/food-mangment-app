@@ -1,8 +1,9 @@
 import { axiosClient } from "../axiosClient"
 
-export const getResipes=()=>{
-    return axiosClient.get("/Recipe")
-
+export const getResipes = (page, name, size) => {
+  return axiosClient.get("/Recipe", {
+    params: { pageNumber: page, name: name, pageSize: size }
+  });
 }
 export const getResipesById=(id)=>{
     return axiosClient.get(`/Recipe/${id}`)

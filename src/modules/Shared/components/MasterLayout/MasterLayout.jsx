@@ -3,17 +3,15 @@ import Navbar from '../Navbar/Navbar'
 import { Outlet } from 'react-router-dom'
 import SideBar from '../Sidebar/Sidebar'
 
-export default function MasterLayout({loginData}) {
+export default function MasterLayout() {
+
   return (
-    <div className='d-flex min-vh-100'>
-      <div>
-        <div className='sidebar-wrapper flex-shrink-0'>
+    <div className='d-flex vh-100 overflow-hidden'>
+        <div className='sidebar-wrapper'>
           <SideBar/>
-        </div>
-      
       </div>
-      <div className="w-100">
-        <Navbar loginData={loginData}/>
+      <div className="w-100 overflow-auto">
+        <Navbar />
         <Outlet/>
       </div>
 

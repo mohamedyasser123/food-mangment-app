@@ -1,7 +1,9 @@
 import { axiosClient } from "../axiosClient"
 
-export const getusers=()=>{
-    return axiosClient.get("/Users")
+export const getusers=(page, size,name)=>{
+    return axiosClient.get("/Users", {
+    params: { pageNumber: page, pageSize: size,userName:name }
+  })
 
 }
 export const deleteUserById=(id)=>{

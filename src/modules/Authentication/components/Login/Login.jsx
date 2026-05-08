@@ -1,30 +1,35 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate} from 'react-router-dom'
 import emailIcon from "../../../../assets/auth-icon/email-icon.svg"
 import passIcon from "../../../../assets/auth-icon/password-icon.svg"
 import { toast } from 'react-toastify'
 import { AuthAPI } from '../../../../api'
+import { AuthContext } from '../../../../context/AuthContext'
 
-export default function Login( {saveLoginData}) {
+export default function Login() {
+  const{saveLoginData}=useContext(AuthContext);
   let {register,formState:{errors},handleSubmit}=useForm();
   let navigate=useNavigate()
   const [showPassword,setShowPassword]=useState(false)
   const onSubmit=async(data)=>{
-    try{
-      const response=await AuthAPI.Login(data)
-      localStorage.setItem('token',response.data.token);
-      saveLoginData();
-      navigate('/dashboard');
-      toast.success("Welcome ,Login Successful",{
-        position:"top-right"
-      })
-    }catch(error){
-      const message = error.response.data.message || "Invalid Email or Password";
-      toast.error(message,{
-        position:"top-right"
-      })
-    }
+    try {
+    const response = await AuthAPI.Login(data);
+    localStorage.setItem('token', response.data.token);
+    saveLoginData();
+    navigate('/dashboard');
+    toast.success("Welcome, Login Successful");
+  } catch (error) {
+    
+    const message = error.response?.data?.message || "Invalid Email or Password";
+    
+    toast.error(message, {
+      position: "top-right"
+    });
+    
+    // لو عايز تعرف السبب الحقيقي في الـ console
+    console.log("Error Details:", error);
+  }
   }
   return (
     <div >
